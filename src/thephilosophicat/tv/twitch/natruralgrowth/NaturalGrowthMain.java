@@ -1,4 +1,4 @@
-package thephilosophicat.tv.twitch.natruralgrowth;
+package thephilosophicat.tv.twitch.NatruralGrowth;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

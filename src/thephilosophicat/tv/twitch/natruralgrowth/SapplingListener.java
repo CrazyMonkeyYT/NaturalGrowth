@@ -14,15 +14,21 @@ public class SapplingListener implements Listener {
 	
 	@EventHandler
 	public void onSaplingDespawn(ItemDespawnEvent event) {
-		//Determines if despawning entity is a sapling 
-		//Bukkit.broadcastMessage(event.getEntity().getItemStack().getType().getKey().getKey());
-		if (event.getEntity().getItemStack().getType().getKey().getKey().contains("sapling")){
+		//Determines if despawning entity is a plant 
+		//**debug** Bukkit.broadcastMessage(event.getEntity().getItemStack().getType().getKey().getKey());
+		String entityType = event.getEntity().getItemStack().getType().getKey().getKey();
+		if (entityType.contains("sapling") || entityType.contains("fungus") || entityType.contains("mushroom")||
+				entityType.contains("propagule")||entityType.contains("flower")||entityType.contains("allium")||
+				entityType.contains("bluet")||entityType.contains("orchid")||entityType.contains("dandelion")||
+				entityType.contains("lilacs")||entityType.contains("lily")||entityType.contains("daisy")||
+				entityType.contains("peony")||entityType.contains("poppy")||entityType.contains("rose")||
+				entityType.contains("tulips")){
 			//(to be added random chance per each sapling )int stackSize = event.getEntity().getItemStack().getAmount();
 			//check if sapling can be placed 
 			
 			if (event.getLocation().getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType()))) {
 				//place sapling
-				//Bukkit.broadcastMessage("setblock");
+				//**debug** Bukkit.broadcastMessage("setblock");
 				event.getLocation().getBlock().setType(event.getEntity().getItemStack().getType());
 			}
 		}

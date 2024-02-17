@@ -16,7 +16,7 @@ public class TabCompleation implements TabCompleter {
      // Check if the sender is a player.
      if (sender instanceof Player) {
          // Check if the command is "something."
-         if (cmd.getName().equalsIgnoreCase("doPlaceDespawn") || cmd.getName().equalsIgnoreCase("do2x2Placement")) {
+         if (cmd.getName().equalsIgnoreCase("doPlaceDespawn") || cmd.getName().equalsIgnoreCase("do2x2Placement") || cmd.getName().equalsIgnoreCase("doPlaceCrops")) {
              // If the player has not typed anything in
              if (args.length == 0) {
                  // Add a list of words that you'd like to show up

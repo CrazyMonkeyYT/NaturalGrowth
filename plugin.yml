@@ -5,13 +5,18 @@ api-version: '1.20'
 
 commands:
    doPlaceDespawn:
-      description: changes config to enable/dissable placing despawn items
+      description: changes config to enable/dissable placing despawned items
       usage: "/<command> [True | False]" 
+      permission: plugin.Rules
+   doPlaceCrops:
+      description: changes config to enable/dissable placing despawned seeds
+      usage: "/<command> [True | False]"
       permission: plugin.Rules
    do2x2Placement:
       description: changes config to enable/dissable placing items in a 2x2 fashion
       usage: "/<command> [True | False]" 
       permission: plugin.Rules
+      
 
 Permissions:
   plugin.Rules:

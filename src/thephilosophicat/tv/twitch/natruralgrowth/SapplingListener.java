@@ -26,7 +26,7 @@ public class SapplingListener implements Listener {
 	@EventHandler
 	public void onSaplingDespawn(ItemDespawnEvent event) {
 		//Determines if despawning entity is a plant 
-		Bukkit.broadcastMessage(event.getEntity().getItemStack().getType().getKey().getKey());
+	//	Bukkit.broadcastMessage(event.getEntity().getItemStack().getType().getKey().getKey());
 		if (config.getBoolean("doPlaceDespawn")){
 			// DEBUG Bukkit.broadcastMessage(event.getLocation().toString());
 

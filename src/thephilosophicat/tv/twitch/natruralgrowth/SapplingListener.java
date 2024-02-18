@@ -46,9 +46,10 @@ public class SapplingListener implements Listener {
 				}
 			}
 			if(notCrop) {	
+				
 				for( String item : itemDrops) {
-					placeItem:
-					if (entityType.contains(item)){
+					
+					if (entityType.toUpperCase().contains(item.toUpperCase())){
 						//(to-do add random chance per each sapling )int stackSize = event.getEntity().getItemStack().getAmount();
 						//check if sapling can be placed 
 						
@@ -59,7 +60,7 @@ public class SapplingListener implements Listener {
 							if (config.getBoolean("do2x2Placement")){
 								for( String i2x2 : items2x2) {
 									//if there are enough in a stack, and if it is an allowed item
-									if (entityType.contains(i2x2) && (event.getEntity().getItemStack().getAmount() >= 4)){
+									if (entityType.toUpperCase().contains(i2x2.toUpperCase()) && (event.getEntity().getItemStack().getAmount() >= 4)){
 										//checks if blocks can accommodate a 2x2 placement 
 										Location location = new Location(centerLocation(event.getLocation()).getWorld(), centerLocation(event.getLocation()).getX(), centerLocation(event.getLocation()).getY(), centerLocation(event.getLocation()).getZ());
 										Location location1 = new Location(location.getWorld(), location.getX(), location.getY(), location.getZ()+1);
@@ -68,13 +69,12 @@ public class SapplingListener implements Listener {
 										//debug Bukkit.broadcastMessage(location1.toString()+  location2.toString()+ location3.toString());
 										if (location1.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType())) && location1.getBlock().isEmpty()) {
 											
-											if (location2.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType())) &&
-													location3.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType()))&& location2.getBlock().isEmpty()&& location3.getBlock().isEmpty()){
+											if (location2.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType())) && location3.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType()))&& location2.getBlock().isEmpty()&& location3.getBlock().isEmpty()){
 												location1.getBlock().setType(event.getEntity().getItemStack().getType());
 												location2.getBlock().setType(event.getEntity().getItemStack().getType());
 												location3.getBlock().setType(event.getEntity().getItemStack().getType());
 												//debug Bukkit.broadcastMessage(String.valueOf(location1.getBlock().canPlace(Bukkit.createBlockData(event.getEntity().getItemStack().getType()))));
-												break placeItem;
+												return;
 											}else {
 												location2 = new Location(location.getWorld(), location.getX()-1, location.getY(), location.getZ()+1);
 												location3 = new Location(location.getWorld(), location.getX()-1, location.getY(), location.getZ());
@@ -84,7 +84,7 @@ public class SapplingListener implements Listener {
 													location2.getBlock().setType(event.getEntity().getItemStack().getType());
 													location3.getBlock().setType(event.getEntity().getItemStack().getType());
 													//debug Bukkit.broadcastMessage("pass 2");
-													break placeItem;
+													return;
 												}
 											}
 										}else {
@@ -97,7 +97,7 @@ public class SapplingListener implements Listener {
 												location2.getBlock().setType(event.getEntity().getItemStack().getType());
 												location3.getBlock().setType(event.getEntity().getItemStack().getType());
 												//debug Bukkit.broadcastMessage("pass 3");
-												break placeItem;
+												return;
 											}else {
 												location2 = new Location(location.getWorld(), location.getX()+1, location.getY(), location.getZ()-1);
 												location3 = new Location(location.getWorld(), location.getX()+1, location.getY(), location.getZ());
@@ -107,7 +107,7 @@ public class SapplingListener implements Listener {
 													location2.getBlock().setType(event.getEntity().getItemStack().getType());
 													location3.getBlock().setType(event.getEntity().getItemStack().getType());
 													//debug Bukkit.broadcastMessage("pass 4");
-													break placeItem;
+													return;
 												}
 											}
 										}
